@@ -1,0 +1,2 @@
+class NotAgainStatement
+end

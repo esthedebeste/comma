@@ -7,6 +7,7 @@ compiles down to c++ lmaoo
 ## syntax
 
 no comments. to use comments, use the `,md` variant.
+don't forget to end your lines with `.`
 
 ### variables
 
@@ -22,12 +23,12 @@ a,= 2.
 the last declared variable gets returned. no variables being declared results in undefined behavior.
 
 ```,
-yeah, a sign, b sign to sign.
-    added sign = a + b.
+yeah a sign, b sign to sign.
+    added sign = a plus b.
 haey.
 
-double, a sign to sign.
-    doubled sign = a * 2.
+double a sign to sign.
+    doubled sign = a times 2.
 elbuod.
 
 double yeah 1, 2.
@@ -35,13 +36,20 @@ double yeah 1, 2.
 
 ### control flow
 
-```,
-chat if a > 1.
-    a,= double a.
-tahc.
+Control flow is labeled, and ends with the label backwards.
 
-basically as long as a < 10.
+```,
+aboveone a > 1?
     a,= double a.
+else. a < 1?
+	a,= a plus 1.
+else.
+    a,= a minus 1.
+enoevoba.
+
+basically a < 10?
+    a,= double a.
+    again!
 yllacisab.
 ```
 
@@ -63,7 +71,7 @@ oneinavariable sign = one.
 oneandahalf math small = 1 5.
 ```
 
-There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two`), 3 (`three`), 4 (`four`), 5 (`five`), 6 (`six`), 7 (`seven`), 9 (`nine`), 10 (`ten`), and 100 (`hundred`).
+There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two`), 3 (`three`), 4 (`four`), 5 (`five`), 6 (`six`), 7 (`seven`), 9 (`nine`), 10 (`ten`), and 100 (`a hundred`).
 
 ### operators
 

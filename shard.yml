@@ -1,0 +1,13 @@
+name: commalang
+version: 0.1.0
+
+authors:
+  - esthedebeste
+
+targets:
+  commalang:
+    main: src/commalang.cr
+
+crystal: 1.9.2
+
+license: MIT
