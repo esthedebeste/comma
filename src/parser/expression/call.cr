@@ -6,6 +6,6 @@ class CallExpression < Expression
   end
 
   def cppify : String
-    "#{callee.cppify}(#{arguments.map(&:cppify).join(", ")})"
+    "#{callee}(#{arguments.join(", ")})"
   end
 end

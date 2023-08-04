@@ -1,1 +1,1 @@
-WIP
+shards run -- ./readme.md -o ./bin/readme && ./bin/readme

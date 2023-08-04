@@ -2,6 +2,7 @@ enum Keyword
   COMMA
   DOT
   QUESTION
+  COLON
   BANG
   EQUALS
   COMMA_EQUALS
@@ -22,6 +23,35 @@ enum BinaryOperator
   DIVIDED_BY
   TO_THE_POWER_OF
   MODULO
+
+  def cppify(a : String, b : String) : String
+    case self
+    when GREATER
+      "#{a}>#{b}"
+    when LESS
+      "#{a}<#{b}"
+    when GREATER_EQUALS
+      "#{a}>=#{b}"
+    when LESS_EQUALS
+      "#{a}<=#{b}"
+    when PLUS
+      "#{a}+#{b}"
+    when MINUS
+      "#{a}-#{b}"
+    when DIFF
+      "abs(#{a}-#{b})"
+    when TIMES
+      "#{a}*#{b}"
+    when DIVIDED_BY
+      "#{a}/#{b}"
+    when TO_THE_POWER_OF
+      "pow(#{a},#{b})"
+    when MODULO
+      "mod(#{a},#{b})"
+    else
+      raise "unreachable"
+    end
+  end
 end
 
 enum BuiltinTypeToken
@@ -36,7 +66,7 @@ enum BuiltinTypeToken
   CHACHA
   TEXTTT
 
-  def to_cpp
+  def cppify
     case self
     when SIGN
       "ssize_t"
@@ -58,6 +88,8 @@ enum BuiltinTypeToken
       "char"
     when TEXTTT
       "std::string"
+    else
+      raise "unreachable"
     end
   end
 end
@@ -91,16 +123,17 @@ class FloatLiteral
 end
 
 class CharLiteral
-  property value : Char
+  property value : String
 
-  def initialize(@value : Char)
+  def initialize(@value : String)
   end
 end
 
 class ChanceLiteral
   property value : Float64
+  property runtime : Bool
 
-  def initialize(@value : Float64)
+  def initialize(@value : Float64, @runtime : Bool = false)
   end
 end
 
@@ -110,6 +143,8 @@ Keywords = {
   "="         => Keyword::EQUALS,
   ",="        => Keyword::COMMA_EQUALS,
   "?"         => Keyword::QUESTION,
+  ":"         => Keyword::COLON,
+  "!"         => Keyword::BANG,
   "to"        => Keyword::TO,
   "again"     => Keyword::AGAIN,
   "not again" => Keyword::NOT_AGAIN,
@@ -127,11 +162,11 @@ Keywords = {
   "modulo"          => BinaryOperator::MODULO,
 
   "true"      => ChanceLiteral.new(1.0),
-  "always"    => ChanceLiteral.new(1.0),
-  "sometimes" => ChanceLiteral.new(0.5), # TODO: runtime
-  "maybe"     => ChanceLiteral.new(0.5), # compile-time
+  "maybe"     => ChanceLiteral.new(0.5),
   "false"     => ChanceLiteral.new(0.0),
-  "never"     => ChanceLiteral.new(0.0),
+  "always"    => ChanceLiteral.new(1.0, true),
+  "sometimes" => ChanceLiteral.new(0.5, true),
+  "never"     => ChanceLiteral.new(0.0, true),
 
   "sign"            => BuiltinTypeToken::SIGN,
   "sign sixty-four" => BuiltinTypeToken::SIGN_64,

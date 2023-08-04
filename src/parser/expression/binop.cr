@@ -10,6 +10,6 @@ class BinopExpression < Expression
   end
 
   def cppify : String
-    "#{first.cppify} #{operator.cppify} #{second.cppify}"
+    operator.cppify first.cppify, second.cppify
   end
 end

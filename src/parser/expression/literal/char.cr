@@ -1,5 +1,5 @@
 class CharLiteralExpression < Expression
-  property value : Char
+  property value : String
 
   def initialize(@value)
   end

@@ -1,0 +1,4 @@
+{
+	"crystal-lang.mainFile": "${workspaceRoot}/src/comma.cr",
+	"C_Cpp.default.compilerPath": "/usr/bin/clang++"
+}

@@ -1,12 +1,12 @@
-name: commalang
+name: comma
 version: 0.1.0
 
 authors:
   - esthedebeste
 
 targets:
-  commalang:
-    main: src/commalang.cr
+  comma:
+    main: src/comma.cr
 
 crystal: 1.9.2
 

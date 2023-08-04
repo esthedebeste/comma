@@ -9,13 +9,23 @@ class PeekableReverseIteratorOverArray(T)
   def initialize(@array : Array(T), @index : Int32)
   end
 
-  def try(&block : self -> _)
+  def try
     previous = @index
-    result = block.call(self)
-    if result.nil?
-      @index = previous
-    end
+    result = yield
+    @index = previous if result.nil?
     result
+  end
+
+  def last
+    @array[0]
+  end
+
+  def without_last
+    PeekableReverseIteratorOverArray.new(@array[1..], @index - 1)
+  end
+
+  def size
+    @array.size
   end
 
   def to_s

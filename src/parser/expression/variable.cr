@@ -5,6 +5,6 @@ class VariableExpression < Expression
   end
 
   def cppify : String
-    @name
+    @name.cppify
   end
 end

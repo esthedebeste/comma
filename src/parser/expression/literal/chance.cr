@@ -1,10 +1,15 @@
 class ChanceLiteralExpression < Expression
   property chance : Float64
+  property runtime : Bool
 
-  def initialize(@chance)
+  def initialize(@chance, @runtime = false)
   end
 
   def cppify : String
-    rand < chance ? "true" : "false"
+    if runtime
+      return "COMMA_CHANCE{#{chance}}"
+    else
+      rand < chance ? "true" : "false"
+    end
   end
 end

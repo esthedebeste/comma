@@ -1,5 +1,9 @@
 abstract class Type
-  abstract def to_cpp : String
+  abstract def cppify : String
+
+  def to_s(io : IO) : Nil
+    io << cppify
+  end
 end
 
 class BuiltinType < Type
@@ -8,7 +12,7 @@ class BuiltinType < Type
   def initialize(@token : BuiltinTypeToken)
   end
 
-  def to_cpp : String
-    @token.to_cpp
+  def cppify : String
+    @token.cppify
   end
 end

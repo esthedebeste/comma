@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe Commalang do
+describe Comma do
   # TODO: Write tests
 
   it "works" do

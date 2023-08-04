@@ -4,6 +4,14 @@ struct Char
   end
 end
 
+# only keep bits between "```," and "```"
+# for example, "no```,yes```nope```,yep```nah" will turn into "yesyep"
+def commamd(preprocessed : String) : String
+  preprocessed.sub(/^.*?```,/m, "") # remove everything before the first "```,"
+    .gsub(/```(?!,).*?```,/m, "")   # remove everything between all middle "```" and "```,"s
+    .sub(/```(?!,).*$/m, "")        # remove everything after the last closing "```"
+end
+
 class Reader
   property source : String
   property position : Int64 = 0
@@ -12,7 +20,11 @@ class Reader
   end
 
   def self.from_file(path : String)
-    new(File.read(path))
+    content = File.read(path)
+    if path.ends_with?("md")
+      content = commamd(content)
+    end
+    new(content)
   end
 
   def eof?

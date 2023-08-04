@@ -2,7 +2,7 @@
 
 pronounced "comma-lang" (or _[short pause]_ lang)
 
-compiles down to c++ lmaoo
+compiles down to c++ lmaoo (AKA the compiler has a dependency on `clang++` existing and working)
 
 ## syntax
 
@@ -20,18 +20,25 @@ a,= 2.
 
 ### functions
 
-the last declared variable gets returned. no variables being declared results in undefined behavior.
+the last declared variable gets returned.  
+no variables being declared results in undefined behavior.
 
 ```,
 yeah a sign, b sign to sign.
     added sign = a plus b.
 haey.
 
-double a sign to sign.
+doubled a sign to sign.
     doubled sign = a times 2.
-elbuod.
+delbuod.
+```
 
-double yeah 1, 2.
+#### function calls
+
+function calls are implicit and postfix.
+
+```,
+1, 2 yeah doubled.
 ```
 
 ### control flow
@@ -40,17 +47,19 @@ Control flow is labeled, and ends with the label backwards.
 
 ```,
 aboveone a > 1?
-    a,= double a.
-else. a < 1?
+    a,= a doubled.
+:a < 1?
 	a,= a plus 1.
-else.
+:
     a,= a minus 1.
 enoevoba.
 
 basically a < 10?
-    a,= double a.
+    a,= a doubled.
     again!
 yllacisab.
+
+a, '\n' putsnoln.
 ```
 
 for loops are fake and don't exist im afraid
@@ -59,7 +68,7 @@ for loops are fake and don't exist im afraid
 
 ```,
 some texttt = "hello chat\n".
-putsnoln some.
+some putsnoln.
 ```
 
 ### number literals
@@ -72,6 +81,16 @@ oneandahalf math small = 1 5.
 ```
 
 There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two`), 3 (`three`), 4 (`four`), 5 (`five`), 6 (`six`), 7 (`seven`), 9 (`nine`), 10 (`ten`), and 100 (`a hundred`).
+
+### chance literals
+
+instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `always`, `sometimes`, and `never`.
+
+```,
+onceinawhile always divided by 3?
+    "yippee!!" putswithaln.
+elihwaniecno.
+```
 
 ### operators
 
@@ -88,7 +107,7 @@ lets do a c++ to , mapping.
 - `2 * (5 + 1)` ->
   ```,
   temporary_variable sign = five plus one.
-  two times temporary_variable
+  two times temporary_variable putswithaln.
   ```
 
 ### types
@@ -108,12 +127,17 @@ LOL right. okay so basically to map some , types to c++ types:
 
 ## ,md
 
-a `,md` file will only have sections delimited by <code>\`\`\`,</code> and <code>\`\`\`</code> interpreted as code. this readme is a fully valid `,md` file, fyi.
+a `,md` file will only have sections delimited by <code>\`\`\`,</code> and <code>\`\`\`</code> interpreted as code. this readme is a fully valid `,md` file, fyi. you run it with
+
+```sh
+# make sure you have crystal installed by the way :p
+shards build comma
+./bin/comma ./readme.md -o ./bin/readme
+./bin/readme
+```
 
 ## filenames
 
 `hello.,`, `hello,` and `hello,,,,,,,,` are legal filenames.
 
 the canonical way to use `,md` is for example `hello,md`. `hello.,md`, `hello.,.md`, and `hello.md` are also permitted by the ,lang compiler.
-
-`/,$|md$/`

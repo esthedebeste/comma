@@ -65,6 +65,29 @@ class Lexer
       input.skip "\""
       return StringLiteral.new(string)
     end
+
+    if input.peek == '\''
+      input.next
+      content = ""
+      escape = 0
+      while true
+        char = input.next
+        if char == '\\'
+          escape += 1
+        elsif char == '\'' && escape % 2 == 0
+          break
+        else
+          escape.times do
+            content += '\\'
+          end
+          content += char
+          escape = 0
+        end
+      end
+      return CharLiteral.new(content)
+    end
+
+    p! input.source[input.position..]
     raise "idk"
   end
 
