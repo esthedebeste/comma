@@ -6,7 +6,7 @@ compiles down to c++ lmaoo (AKA the compiler has a dependency on `clang++` exist
 
 ## syntax
 
-no comments. to use comments, use the `,md` variant.
+no comments. to use comments, use the [`,md` variant](#md).
 don't forget to end your lines with `.`
 
 ### variables
@@ -127,7 +127,7 @@ LOL right. okay so basically to map some , types to c++ types:
 
 ## ,md
 
-a `,md` file will only have sections delimited by <code>\`\`\`,</code> and <code>\`\`\`</code> interpreted as code. this readme is a fully valid `,md` file, fyi. you run it with
+a `,md` file will only have sections delimited by <code>\`\`\`,</code> and <code>\`\`\`</code> interpreted as code. this readme is a fully valid `,md` file, for example. you can run it with
 
 ```sh
 # make sure you have crystal installed by the way :p
