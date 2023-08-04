@@ -25,11 +25,11 @@ no variables being declared results in undefined behavior.
 
 ```,
 yeah a sign, b sign to sign.
-    added sign = a plus b.
+  added sign = a plus b.
 haey.
 
 doubled a sign to sign.
-    doubled sign = a times 2.
+  doubled sign = a times 2.
 delbuod.
 ```
 
@@ -47,16 +47,16 @@ Control flow is labeled, and ends with the label backwards.
 
 ```,
 aboveone a > 1?
-    a,= a doubled.
+  a,= a doubled.
 :a < 1?
-	a,= a plus 1.
+  a,= a plus 1.
 :
-    a,= a minus 1.
+  a,= a minus 1.
 enoevoba.
 
 basically a < 10?
-    a,= a doubled.
-    again!
+  a,= a doubled.
+  again!
 yllacisab.
 
 a, '\n' putsnoln.
@@ -88,7 +88,7 @@ instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `alwa
 
 ```,
 onceinawhile always divided by 3?
-    "yippee!!" putswithaln.
+  "yippee!!" putswithaln.
 elihwaniecno.
 ```
 
