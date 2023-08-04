@@ -1,6 +1,6 @@
-# ,lang
+# ,
 
-pronounced "comma-lang" (or _[short pause]_ lang)
+pronounced "comma" (or _[short pause]_)
 
 compiles down to c++ lmaoo (AKA the compiler has a dependency on `clang++` existing and working)
 
