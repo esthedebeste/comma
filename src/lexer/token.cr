@@ -39,15 +39,15 @@ enum BinaryOperator
     when MINUS
       "#{a}-#{b}"
     when DIFF
-      "std::abs(#{a}-#{b})"
+      "::std::abs(#{a}-#{b})"
     when TIMES
       "#{a}*#{b}"
     when DIVIDED_BY
       "#{a}/#{b}"
     when TO_THE_POWER_OF
-      "std::pow(#{a},#{b})"
+      "::std::pow(#{a},#{b})"
     when MODULO
-      "comma::mod(#{a},#{b})"
+      "::comma::mod(#{a},#{b})"
     else
       raise "unreachable"
     end
@@ -87,7 +87,7 @@ enum BuiltinTypeToken
     when CHACHA
       "char"
     when TEXTTT
-      "std::string"
+      "::std::string"
     else
       raise "unreachable"
     end

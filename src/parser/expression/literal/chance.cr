@@ -7,7 +7,7 @@ class ChanceLiteralExpression < Expression
 
   def cppify : String
     if runtime
-      return "COMMA_CHANCE{#{chance}}"
+      return "::comma::Chance{#{chance}}"
     else
       rand < chance ? "true" : "false"
     end
