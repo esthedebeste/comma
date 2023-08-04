@@ -39,15 +39,15 @@ enum BinaryOperator
     when MINUS
       "#{a}-#{b}"
     when DIFF
-      "abs(#{a}-#{b})"
+      "std::abs(#{a}-#{b})"
     when TIMES
       "#{a}*#{b}"
     when DIVIDED_BY
       "#{a}/#{b}"
     when TO_THE_POWER_OF
-      "pow(#{a},#{b})"
+      "std::pow(#{a},#{b})"
     when MODULO
-      "mod(#{a},#{b})"
+      "comma::mod(#{a},#{b})"
     else
       raise "unreachable"
     end

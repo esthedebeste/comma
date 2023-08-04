@@ -1,4 +1,5 @@
 // included above every outputted c++ file.
+#include <cmath>
 #include <iostream>
 #include <random>
 #include <string>
@@ -14,6 +15,14 @@ template <typename A, typename... T>
 void comma_putswithaln_(A thing, T... rest) {
   std::cout << thing << '\n';
   comma_putswithaln_(rest...);
+}
+
+namespace comma {
+float mod(float a, float b) { return std::fmod(a, b); }
+double mod(double a, double b) { return std::fmod(a, b); }
+long double mod(long double a, long double b) { return std::fmod(a, b); }
+// for integers
+template <typename T> T mod(T a, T b) { return (a % b + b) % b; }
 }
 
 static std::random_device rd;
