@@ -5,6 +5,6 @@ class StringLiteralExpression < Expression
   end
 
   def cppify : String
-    "\"#{@value}\""
+    "::std::string(\"#{@value}\")"
   end
 end
