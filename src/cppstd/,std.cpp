@@ -22,8 +22,12 @@ static std::uniform_real_distribution<double> dis(0.0, 1.0);
 struct COMMA_CHANCE {
   double chance;
 
+  constexpr COMMA_CHANCE(double chance) : chance(chance) {}
   operator bool() { return dis(gen) < chance; }
-  template <typename T> COMMA_CHANCE operator/(T t) {
+  template <typename T> constexpr COMMA_CHANCE operator/(T t) {
     return COMMA_CHANCE{chance / t};
+  }
+  template <typename T> constexpr COMMA_CHANCE operator*(T t) {
+    return COMMA_CHANCE{chance * t};
   }
 };
