@@ -67,7 +67,8 @@ for loops are fake and don't exist im afraid
 ### string literals
 
 ```,
-some texttt = "hello chat\n".
+some texttt = "hello chat
+".
 some putsnoln.
 ```
 

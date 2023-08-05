@@ -5,6 +5,6 @@ class StringLiteralExpression < Expression
   end
 
   def cppify : String
-    "::comma::string(\"#{@value}\")"
+    "::comma::string(\"#{@value.gsub('\n', "\\n")}\")"
   end
 end
