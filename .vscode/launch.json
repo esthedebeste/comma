@@ -6,7 +6,7 @@
 			"type": "lldb",
 			"request": "launch",
 			"program": "${workspaceRoot}/bin/comma",
-			"args": "./readme.md -o ./bin/readme",
+			"args": "./readme.md --cpp ./bin/readme.cpp -o ./bin/readme",
 			"cwd": "${workspaceRoot}",
 			"preLaunchTask": "Compile"
 		}

@@ -9,6 +9,7 @@ module Comma
   # TODO: Put your code here
   puts "its ,lang baby. hell yeah"
   files = [] of String
+  cpp_destination = Path.new(Dir.tempdir, "comma.cpp").to_s
   output = [] of String
 
   OptionParser.parse do |parser|
@@ -24,6 +25,9 @@ module Comma
     end
     parser.on "-o", "--output FILE", "Output to file" do |file|
       output << file
+    end
+    parser.on "--cpp FILE", "Output C++ to this file instead of tmp (#{cpp_destination})" do |file|
+      cpp_destination = file
     end
     parser.unknown_args do |args|
       files = args
@@ -47,12 +51,11 @@ module Comma
     debu! program
     cpp = program.cppify
     debu! cpp
-    tempfile = Path.new Dir.tempdir, "comma.cpp"
-    File.write(tempfile, cpp)
-    puts "wrote to #{tempfile}"
+    File.write(cpp_destination, cpp)
+    puts "wrote to #{cpp_destination}"
     puts "compiling..."
-    puts "$ clang++ #{tempfile} -o #{output}"
-    process = Process.new "clang++", args: [tempfile.to_s, "-o", output], output: Process::Redirect::Inherit, error: Process::Redirect::Inherit
+    puts "$ clang++ #{cpp_destination} -o #{output}"
+    process = Process.new "clang++", args: [cpp_destination, "-o", output], output: Process::Redirect::Inherit, error: Process::Redirect::Inherit
     status = process.wait
     puts "Status: #{status}"
     # File.delete tempfile
