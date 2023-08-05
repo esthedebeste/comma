@@ -45,6 +45,8 @@ function calls are implicit and postfix.
 
 Control flow is labeled, and ends with the label backwards.
 
+### expression ? body : else_body
+
 ```,
 aboveone a > 1?
   a,= a doubled.
@@ -53,13 +55,37 @@ aboveone a > 1?
 :
   a,= a minus 1.
 enoevoba.
+```
 
-basically a < 10?
+#### chance literals
+
+instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `always`, `sometimes`, and `never`.
+
+```,
+onceinawhile always divided by 3?
+  "yippee!!" putswithaln.
+elihwaniecno.
+```
+
+### looping
+
+to loop, you can say `again!`. to cancel the loop, you can use `not again!`
+
+```,
+basically a < 100?
   a,= a doubled.
   again!
 yllacisab.
 
-a, '\n' putsnoln.
+so always?
+  a,= a divided by two.
+  toolow a < 60?
+    so not again!
+  woloot.
+  again!
+os.
+
+"a: ", a, '\n' putsnoln.
 ```
 
 for loops are fake and don't exist im afraid
@@ -88,16 +114,6 @@ There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two
 ```,
 oneandahalfinasign sign = -> oneandahalf sign.
 "1 5: ", oneandahalfinasign, '\n' putsnoln.
-```
-
-### chance literals
-
-instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `always`, `sometimes`, and `never`.
-
-```,
-onceinawhile always divided by 3?
-  "yippee!!" putswithaln.
-elihwaniecno.
 ```
 
 ### operators

@@ -167,14 +167,14 @@ class Parser
   def parse_bangy(tokens : PeekableReverseIteratorOverArray(Token)) : Statement
     token = tokens.next
     raise "Expected bangy statement" if token.nil?
+    label = tokens.next.as?(Identifier).try(&.name) || @curr_conditional
     raise "Expected nothing after bangy keyword" if !tokens.done
-    curr_conditional = @curr_conditional
-    raise "Can't use `again` or `not again` outside of a conditional" if curr_conditional.nil?
+    raise "Can't use `again` or `not again` outside of a conditional" if label.nil?
     case token
     when Keyword::AGAIN
-      AgainStatement.new curr_conditional
+      AgainStatement.new label
     when Keyword::NOT_AGAIN
-      NotAgainStatement.new curr_conditional.reverse
+      NotAgainStatement.new label.reverse
     else
       raise "Unknown bangy statement: #{tokens}"
     end

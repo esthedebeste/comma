@@ -35,12 +35,9 @@ class PeekableReverseIteratorOverArray(T)
   include Iterator(T)
 
   def next : T | Iterator::Stop
-    if @index >= 0
-      @index -= 1
-      @array[@index + 1]
-    else
-      stop
-    end
+    return stop if done
+    @index -= 1
+    @array[@index + 1]
   end
 
   def done : Bool
