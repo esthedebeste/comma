@@ -39,4 +39,10 @@ struct Chance {
     return Chance{chance * t};
   }
 };
+
+// allows for \0 in strings
+template <size_t length>
+inline std::string string(const char (&literal)[length]) {
+  return std::string(&literal[0], length - 1);
+}
 }

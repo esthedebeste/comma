@@ -7,7 +7,7 @@ compiles down to c++ lmaoo (AKA the compiler has a dependency on `clang++` exist
 ## syntax
 
 no comments. to use comments, use the [`,md` variant](#md).
-don't forget to end your lines with `.`
+don't forget to end your statements with `.` or `!`
 
 ### variables
 

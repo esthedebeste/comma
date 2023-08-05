@@ -1,6 +1,6 @@
 ENABLE_DEBU = false
 
-# alternative for `p` macro
+# alternative for `p` macro that also prints the function name
 macro debu!(*exps)
   {% if !ENABLE_DEBU %}
     # debu is disabled
