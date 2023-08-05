@@ -9,6 +9,7 @@ enum Keyword
   TO
   AGAIN
   NOT_AGAIN
+  THIN_ARROW
 end
 
 enum BinaryOperator
@@ -148,6 +149,7 @@ Keywords = {
   "to"        => Keyword::TO,
   "again"     => Keyword::AGAIN,
   "not again" => Keyword::NOT_AGAIN,
+  "->"        => Keyword::THIN_ARROW,
 
   ">"               => BinaryOperator::GREATER,
   "<"               => BinaryOperator::LESS,

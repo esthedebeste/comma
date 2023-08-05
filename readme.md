@@ -83,6 +83,13 @@ oneandahalf math small = 1 5.
 
 There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two`), 3 (`three`), 4 (`four`), 5 (`five`), 6 (`six`), 7 (`seven`), 9 (`nine`), 10 (`ten`), and 100 (`a hundred`).
 
+### casting
+
+```,
+oneandahalfinasign sign = -> oneandahalf sign.
+"1 5: ", oneandahalfinasign, '\n' putsnoln.
+```
+
 ### chance literals
 
 instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `always`, `sometimes`, and `never`.

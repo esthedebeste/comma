@@ -189,10 +189,26 @@ class Parser
   end
 
   def parse_expression(tokens : PeekableReverseIteratorOverArray(Token)) : Expression | Nil
-    tokens.try { parse_function_call(tokens) } ||
-      tokens.try { parse_binop(tokens) } ||
-      tokens.try { parse_variable(tokens) } ||
-      tokens.try { parse_literal(tokens) }
+    parse_binop(tokens)
+  end
+
+  # -> two double
+  def parse_cast(tokens : PeekableReverseIteratorOverArray(Token)) : Expression | Nil
+    type = parse_type tokens
+    debu! type
+    return nil if type.nil?
+    value = parse_binop tokens
+    debu! value
+    return nil if value.nil?
+    return nil if tokens.next != Keyword::THIN_ARROW
+    CastExpression.new value, type
+  end
+
+  def parse_binop_argument(tokens : PeekableReverseIteratorOverArray(Token)) : Expression | Nil
+    tokens.try { parse_literal(tokens) } ||
+      tokens.try { parse_cast(tokens) } ||
+      tokens.try { parse_function_call(tokens) } ||
+      tokens.try { parse_variable(tokens) }
   end
 
   # 2, 3 double, 4 print
@@ -237,12 +253,6 @@ class Parser
     else
       nil
     end
-  end
-
-  def parse_binop_argument(tokens : PeekableReverseIteratorOverArray(Token)) : Expression | Nil
-    tokens.try { parse_literal(tokens) } ||
-      tokens.try { parse_function_call(tokens) } ||
-      tokens.try { parse_variable(tokens) }
   end
 
   # ^ is cursor
