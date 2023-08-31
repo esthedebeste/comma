@@ -138,7 +138,7 @@ lets do a c++ to , mapping.
 
 LOL right. okay so basically to map some , types to c++ types:
 
-- `sign` -> `ssize_t`
+- `sign` -> `ptrdiff_t`
 - `unsi` -> `size_t`
   - `sign six-four` -> `int64_t`
   - `unsi six-four` -> `uint64_t`

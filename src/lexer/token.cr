@@ -70,7 +70,7 @@ enum BuiltinTypeToken
   def cppify
     case self
     when SIGN
-      "ssize_t"
+      "ptrdiff_t"
     when SIGN_64
       "int64_t"
     when SIGN_32
