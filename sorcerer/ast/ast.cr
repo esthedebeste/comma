@@ -1,0 +1,4 @@
+module Ast
+end
+
+require "./**"

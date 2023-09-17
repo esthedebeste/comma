@@ -59,7 +59,15 @@ enoevoba.
 
 #### chance literals
 
-instead of using `true` and `false`, you can use `true`, `maybe`, `false`, `always`, `sometimes`, and `never`.
+instead of using `true` and `false`, you can use `yes`, `maybe`, `no`, `always`, `sometimes`, and `never`.
+
+- `always` has a runtime 100% chance of going into the conditional.
+- `sometimes` has a runtime 50% chance of going into the conditional.
+- `never` has a runtime 0% chance of going into the conditional.
+  - The runtime chance literals support arithmetic. `sometimes divided by 2` has a 25% chance, `never plus 0 2` has a 20% chance, etc.
+- `yes` is a compile-time version of `always`.
+- `maybe` is a compile-time version of `sometimes`.
+- `no` is a compile-time version of `never`.
 
 ```,
 onceinawhile always divided by 3?
@@ -85,7 +93,8 @@ so always?
   again!
 os.
 
-"a: ", a, '\n' putsnoln.
+"a: ", a, '
+ putsnoln.
 ```
 
 for loops are fake and don't exist im afraid
@@ -96,6 +105,18 @@ for loops are fake and don't exist im afraid
 some texttt = "hello chat
 ".
 some putsnoln.
+```
+
+### character literals
+
+you can use ' to specify that the next character is a character literal.
+
+```,
+character chacha = 'a.
+newline chacha = '
+.
+omega chacha = 'Ω.
+character, newline, omega putsnoln.
 ```
 
 ### number literals
@@ -113,7 +134,8 @@ There are convenience _english_ sign-literals for 0 (`zero`), 1 (`one`), 2 (`two
 
 ```,
 oneandahalfinasign sign = -> oneandahalf sign.
-"1 5: ", oneandahalfinasign, '\n' putsnoln.
+"1 5: ", oneandahalfinasign, '
+ putsnoln.
 ```
 
 ### operators
@@ -146,8 +168,28 @@ LOL right. okay so basically to map some , types to c++ types:
   - `unsi three-two` -> `uint32_t`
 - `math small` -> `float`
 - `math big` -> `double`
-- `chacha` -> `char`
-- `texttt` -> `std::string`
+- `chacha` -> `wchar_t`
+- `texttt` -> `std::wstring` (todo: utf-32)
+
+### exporting
+
+multiple files? we got you covered. to export something, prefix it with `_`. (top-level only for now)
+
+`sorcerer/a,`:
+
+```,
+_somevariable texttt = "haiiii :3 ".
+
+_somefunction a texttt to texttt.
+  returnvalue texttt = a plus _somevariable.
+noitcnufemos_.
+```
+
+`sorcerer/b,`:
+
+```,
+_somevariable _somefunction putswithaln.
+```
 
 ## ,md
 

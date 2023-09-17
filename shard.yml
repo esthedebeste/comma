@@ -6,7 +6,7 @@ authors:
 
 targets:
   comma:
-    main: src/comma.cr
+    main: sorcerer/comma.cr
 
 crystal: 1.9.2
 
