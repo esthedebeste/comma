@@ -7,9 +7,18 @@
 #include <string>
 #if defined(WIN32) || defined(_WIN32) ||                                       \
     defined(__WIN32) && !defined(__CYGWIN__)
-#define _COMMA_WIN32U16
+#define _COMMA_WIN32
+#define _COMMA_OPENER "start"
 #include <fcntl.h>
 #include <io.h>
+#endif
+#ifdef __linux__
+#define _COMMA_LINUX
+#define _COMMA_OPENER "xdg-open"
+#endif
+#ifdef __APPLE__
+#define _COMMA_APPLE
+#define _COMMA_OPENER "open"
 #endif
 
 void comma_putsnoln_() {}
@@ -27,11 +36,21 @@ void comma_putswithaln_(A thing, T... rest) {
 
 namespace comma {
 inline void premain(void) {
-#ifdef _COMMA_WIN32U16
+#ifdef _COMMA_WIN32
   _setmode(_fileno(stdout), _O_U16TEXT);
 #else
   setlocale(LC_ALL, "");
 #endif
+}
+
+void dee_dee_dee_dinky_dinky() {
+  std::wcout << L":3 :3 :3" << std::endl;
+#ifdef _COMMA_OPENER
+  std::system(_COMMA_OPENER " https://youtu.be/nos_w39ayxg");
+#else
+  std::wcout << L"please open https://youtu.be/nos_w39ayxg ^_^" << std::endl;
+#endif
+  std::exit(3);
 }
 
 float mod(float a, float b) { return std::fmod(a, b); }

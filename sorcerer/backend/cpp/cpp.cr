@@ -242,7 +242,7 @@ class Backend::Cpp < Backend::Backend
     last_declared = function.last_declared_variable
     if last_declared.nil?
       # undefined behavior
-      io << "puts(\":3\");exit(123);"
+      io << "::comma::dee_dee_dee_dinky_dinky();"
     else
       io << "return "
       cppify io, last_declared.name
